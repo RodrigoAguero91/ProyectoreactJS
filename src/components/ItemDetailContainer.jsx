@@ -6,7 +6,6 @@ import { ItemDetail } from './ItemDetail';
 import { products } from '../data/products';
 
 
-
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState(null);
 
@@ -31,7 +30,7 @@ export const ItemDetailContainer = () => {
 
     return (
         <Container className="mt-5">
-            {item ? <ItemDetail item={item} /> : <>Cargando...</>}
+          {item ? <ItemDetail item={item} /> : <>cargando...</> }
         </Container>
 
     );

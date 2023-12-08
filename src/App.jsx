@@ -7,7 +7,7 @@ import { CartProvider } from "./contexts/CartContext";
 
 function App() {
   return (
-    <CartProvider>
+
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -22,7 +22,7 @@ function App() {
           <Route path="/items/:id" element={<ItemDetailContainer />} />
         </Routes>
       </BrowserRouter>
-    </CartProvider>
+    
   );
 }
 

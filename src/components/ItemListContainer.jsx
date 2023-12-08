@@ -1,47 +1,43 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState, useContext } from 'react';
-import Container from 'react-bootstrap/Container';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Container from "react-bootstrap/Container";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 
-import { products } from '../data/products';
 import { ItemList } from "../components/ItemList";
-import context from 'react-bootstrap/esm/AccordionContext';
-
 
 export const ItemListContainer = (props) => {
-    const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);
 
-   
-    
-    const { id } = useParams();
+  const { id } = useParams();
 
-    useEffect(() => {
-        const mypromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(products);
-            }, 2000);
+  useEffect(() => {
+    const db = getFirestore();
 
-        });
+    const refCollection = !id
+      ? collection(db, "items")
+      : query(collection(db, "items"), where("category", "==", id));
 
-        mypromise.then((response) => {
-            if (!id) {
-                setItems(response);
-            } else {
-                const filterByCategory = response.filter(
-                    (item) => item.category === id
-                );
-                setItems(filterByCategory);
-            }
-        });
-    }, [id]);
+    getDocs(refCollection).then((snapshot) => {
+      if (snapshot.size === 0) console.log("no results");
+      else
+        setItems(
+          snapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
+    });
+  }, [id]);
 
-
-
-    return (
-        <Container className="mt-5">
-            <h1>{props.greeting}
-           </h1>
-            <ItemList items={items} />
-        </Container>
-
-    );
-}
+  return (
+    <Container className="mt-5">
+      <h1>{props.greeting}</h1>
+      <ItemList items={items} />
+    </Container>
+  );
+};

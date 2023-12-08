@@ -13,7 +13,7 @@ export const CartProvider = (children) => {
         return [...prev, item];
     });
 
-    console.log(items);
+
 
   return (
     <CartContext.Provider value={{Items, clear, onAdd }}>

@@ -8,7 +8,7 @@ import { Cart } from "./components/Cart";
 
 function App() {
   return (
-
+   <CartProvider>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -24,6 +24,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
+      </CartProvider>
+     
     
   );
 }

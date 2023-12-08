@@ -1,9 +1,12 @@
 
+import { useContext } from "react";
 import { ItemCounter } from "./ItemCounter";
+import { CartContext } from "../contexts/CartContext";
 
 
 export const ItemDetail = ({ item }) => {
-   
+   const {onAdd} = useContext(CartContext);
+
     const add =() => {
        onAdd(item);
     }
@@ -11,7 +14,7 @@ export const ItemDetail = ({ item }) => {
     <>
       <h1>{item.title}</h1>
       <img src={item.pictureUrl} width={400}/>
-      <ItemCounter onAdd={add}/>
+      <ItemCounter onAdd={add} stock={item.stock} initial={1}/>
     </>
   );
 };

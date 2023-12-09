@@ -9,15 +9,15 @@ import { CartWidget } from "./CartWidget";
 export const NavBar = () => {
     return (
         <header>
-            <Navbar bg="light" data-bs-theme="light">
-                <Container>
+            <Navbar bg="light" data-bs-theme="light" style={{ textTransform:"uppercase"  }}>
+                <Container >
                     <Navbar.Brand>
-                        <NavLink to="/">Compra/Venta de Automoviles</NavLink>
+                        <NavLink to="/" style={{ textDecoration:"none"  }}>Venta de Automoviles</NavLink>
                     </Navbar.Brand>
-                    <Nav className="me-auto">
-                        <NavLink to="category/Motos">Motos</NavLink>
-                        <NavLink to="category/Autos">Autos</NavLink>
-                        <NavLink to="category/Camioneta">Camionetas</NavLink>
+                    <Nav className="me-auto" >
+                        <NavLink to="category/Motos" style={{ textDecoration:"none", marginLeft:"30px"}} >Motos</NavLink>
+                        <NavLink to="category/Autos"style={{ textDecoration:"none", marginLeft:"30px"}}>Autos</NavLink>
+                        <NavLink to="category/Camioneta"style={{ textDecoration:"none",marginLeft:"30px" }}>Camionetas</NavLink>
                     </Nav>
                     <CartWidget />
                 </Container>
@@ -28,4 +28,8 @@ export const NavBar = () => {
 
 
 
-}
+};
+
+
+        
+    

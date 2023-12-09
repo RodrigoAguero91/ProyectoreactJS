@@ -14,7 +14,7 @@ export const NavBar = () => {
                     <Navbar.Brand>
                         <NavLink to="/" style={{ textDecoration:"none"  }}>Venta de Automoviles</NavLink>
                     </Navbar.Brand>
-                    <Nav className="me-auto" >
+                    <Nav className="me-auto"  >
                         <NavLink to="category/Motos" style={{ textDecoration:"none", marginLeft:"30px"}} >Motos</NavLink>
                         <NavLink to="category/Autos"style={{ textDecoration:"none", marginLeft:"30px"}}>Autos</NavLink>
                         <NavLink to="category/Camioneta"style={{ textDecoration:"none",marginLeft:"30px" }}>Camionetas</NavLink>
